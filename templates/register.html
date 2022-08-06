@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Register</h1>
+
+    <form action="{% url 'register' %}" method="POST">
+        {% include 'alerts.html' %}
+        {% csrf_token %}
+        {{error}}
+        <input type="text" placeholder="muncipality name" name="mun_name">
+        <input type="email" placeholder="email" name="email">
+        <input type="text" placeholder="name" name="name">
+        <input type="password" placeholder="password" name="password">
+        <input type="tel" placeholder="tel" name="tel">
+        <input type="username" placeholder="username" name="username">
+        <select name="role" id="">
+            <option value="">Select Role</option>
+            <option value="muncipality">muncipality</option>
+            <option value="worker">worker</option>
+        </select>
+
+        <select name="state" required>
+            <option value="" selected disabled>Select your current state</option>
+            <option value="Kerala">Kerala</option>
+        </select>
+
+        <select name="district">
+            <option value="" selected disabled>Select your current district</option>
+            <option value="Trivandrum">Trivandrum</option>
+            <option value="Kollam">Kollam</option>
+            <option value="Pathanamthitta">Pathanamthitta</option>
+            <option value="Alappuzha">Alappuzha</option>
+            <option value="Kottayam">Kottayam</option>
+            <option value="Idukki">Idukki</option>
+            <option value="Ernakulam">Ernakulam</option>
+            <option value="Thrissur">Thrissur</option>
+            <option value="Palakkad">Palakkad</option>
+            <option value="Malappuram">Malappuram</option>
+            <option value="Kozhikode">Kozhikode</option>
+            <option value="Wayanad">Wayanad</option>
+            <option value="Kannur">Kannur</option>
+            <option value="Kasaragod">Kasaragod</option>
+        </select>
+
+        <input type="submit" value="submit">
+
+    </form>
+</body>
+
+</html>

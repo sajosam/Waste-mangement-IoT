@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts',
+    'home',
     
 
 ]
@@ -70,6 +72,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'wasteManagement.wsgi.application'
+AUTH_USER_MODEL = 'accounts.Account'
+
 
 
 # Database
