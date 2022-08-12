@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Title</title>
+    <title>BIN VIEW</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,28 +25,25 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
-    <h2>
-        Bin Page
-    </h2><br>
-    <!-- card view of the bins -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <img src="https://www.w3schools.com/bootstrap4/img_avatar1.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Bin 1</h5>
+
+
+<div class="card text-center">
+  <div class="card-header">
+   <b>BIN VIEW</b>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Bin 1</h5>
                         <p class="card-title">Bin id: {{ id }}</p>
                         <p class="card-text">Capacity: {{ capacity }}</p>
                         <p class="card-text">Place: {{ place }}</p>
                         <p class="card-text">distance: {{ distance }}cm</p>
                         <a href="{% url 'single' %}" class="btn btn-primary">more details</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  </div>
+  <div class="card-footer text-muted">
+    #####
+  </div>
+</div>
+
 </body>
 
 </html>
-
