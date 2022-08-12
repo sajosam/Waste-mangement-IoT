@@ -32,7 +32,7 @@
 					<div class="col">
 						<div class="header_content d-flex flex-row align-items-center justify-content-start">
 							<div class="header_content_inner d-flex flex-row align-items-end justify-content-start">
-								<div class="logo"><a href="index.html">
+								<div class="logo"><a href="#">
 										<font color="black">Garbo</font>
 									</a></div>
 								<nav class="main_nav">
@@ -49,9 +49,16 @@
 										<li><a href="{% url 'logout' %}">
 												<font color="black">LOGOUT</font>
 											</a></li>
+
+
+										{% if 'role' in request.session %}
 										<li><a href="{% url 'create' %}">
 												<font color="black">Add Bin</font>
 											</a></li>
+
+										{% endif %}
+
+
 										<li><a href="{% url 'bin' %}">
 												<font color="black">View Bin</font>
 											</a></li>
@@ -131,34 +138,10 @@
 
 		<div class="home">
 			<div class="background_image" style="background-image:url({% static 'images/loc.png' %})"></div>
+
 		</div>
 
-		<!-- Search -->
 
-		<!--	<div class="home_search">-->
-		<!--		<div class="container">-->
-		<!--			<div class="row">-->
-		<!--				<div class="col">-->
-		<!--					<div class="home_search_container">-->
-		<!--						<div class="home_search_title">Search for your trip</div>-->
-		<!--						<div class="home_search_content">-->
-		<!--							<form action="#" class="home_search_form" id="home_search_form">-->
-		<!--								<div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">-->
-		<!--									<input type="text" class="search_input search_input_1" placeholder="City" required="required">-->
-		<!--									<input type="text" class="search_input search_input_2" placeholder="Departure" required="required">-->
-		<!--									<input type="text" class="search_input search_input_3" placeholder="Arrival" required="required">-->
-		<!--									<input type="text" class="search_input search_input_4" placeholder="Budget" required="required">-->
-		<!--									<button class="home_search_button">search</button>-->
-		<!--								</div>-->
-		<!--							</form>-->
-		<!--						</div>-->
-		<!--					</div>-->
-		<!--				</div>-->
-		<!--			</div>-->
-		<!--		</div>-->
-		<!--	</div>-->
-
-		<!-- About -->
 
 		<div class="about">
 			<div class="container">
@@ -202,53 +185,6 @@
 			</div>
 		</div><br><br>
 
-		<!-- Milestones -->
-
-		<!-- <div class="milestones">
-			<div class="container">
-				<div class="row">
-
-					Milestone
-		<div class="col-lg-3 milestone_col">
-			<div class="milestone text-center">
-				<div class="milestone_icon"><img src="{% static 'images/mountain.svg' %}" alt=""></div>
-				<div class="milestone_counter" data-end-value="17">0</div>
-				<div class="milestone_text">Online Courses</div>
-			</div>
-		</div>
-
-		Milestone
-		<div class="col-lg-3 milestone_col">
-			<div class="milestone text-center">
-				<div class="milestone_icon"><img src="{% static 'images/island.svg' %}" alt=""></div>
-				<div class="milestone_counter" data-end-value="213">0</div>
-				<div class="milestone_text">Students</div>
-			</div>
-		</div>
-
-		Milestone
-		<div class="col-lg-3 milestone_col">
-			<div class="milestone text-center">
-				<div class="milestone_icon"><img src="{% static 'images/camera.svg' %}" alt=""></div>
-				<div class="milestone_counter" data-end-value="11923">0</div>
-				<div class="milestone_text">Teachers</div>
-			</div>
-		</div>
-
-		Milestone
-		<div class="col-lg-3 milestone_col">
-			<div class="milestone text-center">
-				<div class="milestone_icon"><img src="{% static 'images/boat.svg' %}" alt=""></div>
-				<div class="milestone_counter" data-end-value="15">0</div>
-				<div class="milestone_text">Countries</div>
-			</div>
-		</div>
-
-	</div>
-	</div>
-	</div> -->
-
-		<!-- Why Choose Us -->
 
 		<div class="why">
 			<div class="parallax_background parallax-window" data-parallax="scroll"

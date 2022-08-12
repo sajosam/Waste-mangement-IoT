@@ -76,7 +76,7 @@ class Account(AbstractBaseUser):
     phone_number    = models.BigIntegerField(default=0)
     state           = models.CharField(max_length=50,choices=state_choices)
     district        = models.CharField(max_length=50,choices=district_choices)
-    role            = models.CharField(max_length=50,choices=(('muncipality','muncipality'),('workers','workers')))
+    role            = models.CharField(max_length=50,choices=(('admin','admin'),('workers','workers')))
     mun_name        = models.CharField(max_length=100, blank=True, null=True)
     # required
     date_joined     = models.DateTimeField(auto_now_add=True)

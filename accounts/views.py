@@ -48,6 +48,12 @@ def register(request):
             user=Account.objects.create_user(email=email, password=password, name=name, username=username, state=state, district=district, role=role, phone_number=phone_number, mun_name=mun_name)
             user.save()
             messages.success(request, 'you are registered')
+            # create session
+            request.session['email']=email
+            request.session['name']=user.name
+            request.session['mun']=user.mun_name
+            if user.role=='admin':
+                request.session['role']=user.role
             return redirect('login')
     return render(request, 'register.html')
 
