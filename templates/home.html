@@ -43,15 +43,21 @@
 
 										{% if user.is_authenticated %}
 										<!-- <li> Hello {{user.username}}</li> -->
-										<li><a href="accounts/logout">
+										<li><a href="{% url 'logout' %}">
 												<font color="black">LOGOUT</font>
+											</a></li>
+										<li><a href="{% url 'create' %}">
+												<font color="black">Add Bin</font>
+											</a></li>
+										<li><a href="{% url 'bin' %}">
+												<font color="black">View Bin</font>
 											</a></li>
 
 										{% else %}
-										<li><a href="accounts/register">
+										<li><a href="{% url 'register' %}">
 												<font color="black">REGISTER</font>
 											</a></li>
-										<li><a href="accounts/login">
+										<li><a href="{% url 'login' %}">
 												<font color="black">LOGIN</font>
 											</a></li>
 										{% endif %}
