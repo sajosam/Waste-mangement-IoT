@@ -1,52 +1,97 @@
-<!doctype html>
-<html lang="en">
+<!--<!doctype html>-->
+<!--<html lang="en">-->
 
+<!--<head>-->
+<!--    <title>Title</title>-->
+<!--    &lt;!&ndash; Required meta tags &ndash;&gt;-->
+<!--    <meta charset="utf-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+
+<!--    &lt;!&ndash; Bootstrap CSS &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
+<!--        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+<!--</head>-->
+
+<!--<body>-->
+
+<!--    &lt;!&ndash; Optional JavaScript &ndash;&gt;-->
+<!--    &lt;!&ndash; jQuery first, then Popper.js, then Bootstrap JS &ndash;&gt;-->
+<!--    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"-->
+<!--        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">-->
+<!--    </script>-->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"-->
+<!--        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">-->
+<!--    </script>-->
+
+<!--    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"-->
+<!--        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">-->
+<!--    </script>-->
+<!--    <form action="{% url 'bin' %}" method="post">-->
+<!--        {% csrf_token %}-->
+<!--        <div class="container" style="margin:15%">-->
+<!--            <div class="form-group">-->
+<!--                <label for="binid">BinId</label>-->
+<!--                <input type="number" class="form-control" id="" aria-describedby="emailHelp"-->
+<!--                    placeholder="Enter the bin id">-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                <label for="place">Place: </label>-->
+<!--                <input type="password" class="form-control" id="" placeholder="Place">-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                <label for="capacity">Capacity: </label>-->
+<!--                <input type="password" class="form-control" id="" placeholder="Capacity">-->
+<!--            </div>-->
+<!--            <div class="form-group" align="center">-->
+<!--                <button type="submit" class="btn btn-primary">Submit</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </form>-->
+<!--</body>-->
+
+<!--</html>-->
+
+
+{% load static %}
+<html>
 <head>
-    <title>Title</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<meta charset="utf-8">
+	<title>Create New Bin </title>
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	<link rel="stylesheet" type="text/css" href="{% static 'lo/css/roboto-font.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'lo/fonts/font-awesome-5/css/fontawesome-all.min.css' %}">
+	<!-- Main Style Css -->
+    <link rel="stylesheet" href="{% static 'lo/css/style.css' %}"/>
 </head>
+<body class="form-v5">
+	<div class="page-content">
+		<div class="form-v5-content">
+			<form class="form-detail" action="{% url 'bin' %}" method="post">
+        		{% csrf_token %}
+				<h2>Create New Bin</h2>
+                <div class="form-row">
+					<label for="binid">Bin ID</label>
+					<input type="text" name="binid" id="binid" class="input-text" placeholder="Enter the BIN ID" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
+					<i class="fas fa-envelope"></i>
+				</div>
+                <div class="form-row">
+					<label for="place">Place</label>
+					<input type="text" name="place" id="place" class="input-text" placeholder="Enter the place" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
+					<i class="fas fa-envelope"></i>
+				</div>
+				<div class="form-row">
+					<label for="capacity">Bin Capacity</label>
+					<input type="text" name="capacity" id="capacity" class="input-text" placeholder="Enter Bin capacity" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
+					<i class="fas fa-envelope"></i>
+				</div>
 
-<body>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
-    <form action="{% url 'bin' %}" method="post">
-        {% csrf_token %}
-        <div class="container" style="margin:15%">
-            <div class="form-group">
-                <label for="binid">BinId</label>
-                <input type="number" class="form-control" id="" aria-describedby="emailHelp"
-                    placeholder="Enter the bin id">
-            </div>
-            <div class="form-group">
-                <label for="place">Place: </label>
-                <input type="password" class="form-control" id="" placeholder="Place">
-            </div>
-            <div class="form-group">
-                <label for="capacity">Capacity: </label>
-                <input type="password" class="form-control" id="" placeholder="Capacity">
-            </div>
-            <div class="form-group" align="center">
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </div>
-    </form>
-</body>
-
-</html>
+				<div class="form-row-last">
+					<input type="submit" name="create" class="register" value="Create">
+				</div>
+			</form>
+		</div>
+	</div>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
