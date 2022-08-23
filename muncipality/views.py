@@ -27,40 +27,28 @@ def bin(request):
     capacity = database.child('/test').child('capacity').get().val()
     muncipality = database.child('/test').child('muncipality').get().val()
     place = database.child('/test').child('place').get().val()
+    if distance > 0 and distance < 4:
+        dist=100
+    elif distance > 4 and distance < 8:
+        dist=85
+    elif distance > 8 and distance < 10:
+        dist=65
+    elif distance > 10 and distance < 12:
+        dist=45
+    else:
+        dist=25
 
     context={
       "distance":distance,
       "binid":binid,
       "capacity":capacity,
       "muncipality":muncipality,
-      "place":place
+      "place":place,
+        "dist":dist
     }
 
-    return render(request,"bin.html",context)
+    return render(request,'bin.html',context)
 
-def single(request):
-  distance = database.child('/test').child('distance').get().val()
-  id = database.child('/test').child('id').get().val()
-  capacity = database.child('/test').child('capacity').get().val()
-  if distance > 0 and distance < 3:
-    dist=25
-  elif distance > 3 and distance < 6:
-    dist=45
-  elif distance > 6 and distance < 9:
-    dist=65
-  elif distance > 9 and distance < 12:
-    dist=85
-  else:
-    dist=100
-  
-  context={
-    "distance":distance,
-    "id":id,
-    "capacity":capacity,
-    "dist":dist,
-    "place":"demo"
-  }
-  return render(request, 'single.html', context)
 
 
 def createbin(request):
@@ -74,6 +62,7 @@ def createbin(request):
     distance=0.0
     latitude=0.0
     longitude=0.0
+    
     # database.child('test').child('distance').set(distance)
     # database.child('test').child('binid').set(binid)
     # database.child('test').child('capacity').set(capacity)

@@ -15,7 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'styles/about.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'styles/about_responsive.css' %}">
-	<script type="module" src="{% static 'js/distance.js' %}"></script>
+	<!-- <script type="module" src="{% static 'js/map.js' %}"></script> -->
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
 </head>
@@ -192,9 +192,9 @@
 			<div class="container">
 				<div class="row">
 					<div class="col text-center">
-<!--						<div class="section_subtitle">simply amazing places</div>-->
+						<!--						<div class="section_subtitle">simply amazing places</div>-->
 						<div class="section_title">
-<!--							<h2>Why choose us?</h2>-->
+							<!--							<h2>Why choose us?</h2>-->
 						</div>
 					</div>
 				</div>
@@ -255,51 +255,64 @@
 					</div>
 					{% endfor %}
 
-					<!--				&lt;!&ndash; Team Item &ndash;&gt;-->
-					<!--				<div class="col-xl-3 col-md-6 team_col">-->
-					<!--					<div class="team_item d-flex flex-column align-items-center justify-content-start text-center">-->
-					<!--						<div class="team_image"><img src="{% static 'images/team_2.jpg' %}" alt=""></div>-->
-					<!--						<div class="team_content">-->
-					<!--							<div class="team_title"><a href="#">James Williams</a></div>-->
-					<!--							<div class="team_text">-->
-					<!--								<p>Pellentesque sit amet elementum ccumsan sit amet mattis eget, tristique at leo. Vivamus massa.</p>-->
-					<!--							</div>-->
-					<!--						</div>-->
-					<!--					</div>-->
-					<!--				</div>-->
-
-					<!--				&lt;!&ndash; Team Item &ndash;&gt;-->
-					<!--				<div class="col-xl-3 col-md-6 team_col">-->
-					<!--					<div class="team_item d-flex flex-column align-items-center justify-content-start text-center">-->
-					<!--						<div class="team_image"><img src="{% static 'images/team_3.jpg' %}" alt=""></div>-->
-					<!--						<div class="team_content">-->
-					<!--							<div class="team_title"><a href="#">Michael James</a></div>-->
-					<!--							<div class="team_text">-->
-					<!--								<p>Pellentesque sit amet elementum ccumsan sit amet mattis eget, tristique at leo. Vivamus massa.</p>-->
-					<!--							</div>-->
-					<!--						</div>-->
-					<!--					</div>-->
-					<!--				</div>-->
-
-					<!-- Team Item -->
-					<!--				<div class="col-xl-3 col-md-6 team_col">-->
-					<!--					<div class="team_item d-flex flex-column align-items-center justify-content-start text-center">-->
-					<!--						<div class="team_image"><img src="{% static 'images/team_4.jpg' %}" alt=""></div>-->
-					<!--						<div class="team_content">-->
-					<!--							<div class="team_title"><a href="#">Noah Smith</a></div>-->
-					<!--							<div class="team_text">-->
-					<!--								<p>Pellentesque sit amet elementum ccumsan sit amet mattis eget, tristique at leo. Vivamus massa.</p>-->
-					<!--							</div>-->
-					<!--						</div>-->
-					<!--					</div>-->
-					<!--				</div>-->
 
 				</div>
 			</div>
 		</div>
 
 		<!-- Footer -->
-		<div id="map" style="height:500px;width:100%; "></div>
+		<div onload="initMap()" id="map" style="height:500px;width:100%; "></div>
+		<script>
+			const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+			let labelIndex = 0;
+
+
+			function initMap() {
+				var a = [{
+					lat: 10.97,
+					lng: 77.59
+				}, {
+					lat: 11.97,
+					lng: 77.59
+				}, {
+					lat: 12.97,
+					lng: 77.59
+				}]
+				const bangalore = {
+					lat: 12.97,
+					lng: 77.59
+				};
+				const map = new google.maps.Map(document.getElementById("map"), {
+					zoom: 12,
+					center: bangalore,
+				});
+
+				// This event listener calls addMarker() when the map is clicked.
+				// Add a marker at the center of the map.
+				for (var i = 0; i < a.length; i++) {
+					addMarker({
+						lat: a[i].lat,
+						lng: a[i].lng
+					}, map)
+				}
+
+
+			}
+
+			// Adds a marker to the map.
+			function addMarker(location, map) {
+				// Add the marker at the clicked location, and add the next-available label
+				// from the array of alphabetical characters.
+				new google.maps.Marker({
+					position: location,
+					label: labels[labelIndex++ % labels.length],
+					map: map,
+				});
+			}
+
+			window.initMap = initMap;
+		</script>
+
 
 		<footer class="footer">
 			<div class="parallax_background parallax-window" data-parallax="scroll"
@@ -416,7 +429,9 @@
 	<script src="{% static 'plugins/easing/easing.js' %}"></script>
 	<script src="{% static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
 	<script src="{% static 'js/about.js' %}"></script>
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbWQq2KjAtOBGzOG2Uq51RXnGPFc0atzg&callback=initMap"></script>
+	<script async defer
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbWQq2KjAtOBGzOG2Uq51RXnGPFc0atzg&callback=initMap">
+	</script>
 </body>
 
 </html>

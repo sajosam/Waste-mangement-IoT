@@ -1,81 +1,92 @@
-<!--<!doctype html>-->
-<!--<html lang="en">-->
+{% load static %}
 
-<!--<head>-->
-<!--    <title>BIN VIEW</title>-->
-<!--    &lt;!&ndash; Required meta tags &ndash;&gt;-->
-<!--    <meta charset="utf-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
-
-<!--    &lt;!&ndash; Bootstrap CSS &ndash;&gt;-->
-<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
-<!--        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
-<!--</head>-->
-
-<!--<body>-->
-<!--<div class="card text-center">-->
-<!--  <div class="card-header">-->
-<!--   <b>BIN VIEW</b>-->
-<!--  </div>-->
-<!--  <div class="card-body">-->
-<!--    <h5 class="card-title">Bin 1</h5>-->
-<!--                        <p class="card-title">Bin id: {{ id }}</p>-->
-<!--                        <p class="card-text">Capacity: {{ capacity }}</p>-->
-<!--                        <p class="card-text">Place: {{ place }}</p>-->
-<!--                        <p class="card-text">distance: {{ distance }}cm</p>-->
-<!--                        <a href="{% url 'single' %}" class="btn btn-primary">more details</a>-->
-<!--  </div>-->
-<!--  <div class="card-footer text-muted">-->
-<!--    #####-->
-<!--  </div>-->
-<!--</div>-->
-
-<!--</body>-->
-
-<!--</html>-->
 
 <!doctype html>
 <html lang="en">
 
 <head>
-    <title>BIN VIEW</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>BIN VIEW</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'style/syyle.scss' %}">
 </head>
 
 <body>
-<nav class="bg-dark navbar-dark">
-  <div class="container">
-    <a href="" class="navbar-brand"><i class="fas fa-tree mr-2"></i>GARBO</a>
-  </div>
+  <nav class="bg-dark navbar-dark">
+    <div class="container">
+      <a href="" class="navbar-brand"><i class="fas fa-tree mr-2"></i>GARBO</a>
+    </div>
   </nav>
-   <section id="header" class="jumbotron text-center">
-     <h1 class="display-20">Active Bins</h1>
+  <section id="header" class="jumbotron text-center">
+    <h1 class="display-20">Active Bins</h1>
 
-</section>
+  </section>
 
-<div class="card text-center">
-  <div class="card-header">
-   <b>BIN VIEW</b>
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Bin 1</h5>
-                        <table>
-                        <p class="card-text">Bin id: {{ id }}</p>
-                        <p class="card-text">Capacity: {{ capacity }}</p>
-                        <p class="card-text">Place: {{ place }}</p>
-                        <p class="card-text">distance: {{ distance }}cm</p>
-                        <p class="card-text">Muncipality: {{ muncipality }}</p>
-                        <a href="{% url 'single' %}" class="btn btn-primary">more details</a>
-                            </table>
-  </div>
+  <div class="card text-center">
+    <div class="card-header">
+      <b>BIN VIEW</b>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="card-body">
+            <h5 class="card-title">Bin 1</h5>
+            <table>
+              <p class="card-text">Bin id: {{ id }}</p>
+              <p class="card-text">Capacity: {{ capacity }}</p>
+              <p class="card-text">Place: {{ place }}</p>
+              <p class="card-text">distance: {{ distance }}cm</p>
+              <p class="card-text">Muncipality: {{ muncipality }}</p>
+              <!-- <a href="#" class="btn btn-primary">more details</a> -->
+            </table>
+          </div>
+        </div>
+        <div class="col">
+          <div class="container p-5">
+            <!-- <div class="progress" data-percentage="74">
+              <span class="progress-left">
+                <span class="progress-bar"></span>
+              </span>
+              <span class="progress-right">
+                <span class="progress-bar"></span>
+              </span>
+              <div class="progress-value">
+                <div>
+                  {{ dist }}%<br>
+                  <span>completed</span>
+                </div>
+              </div>
+            </div> -->
 
-</div>
+
+            {% if dist < 45 %}
+            <div class="progress">
+              <div class="progress-bar bg-info" role="progressbar" style="width: {{dist}}%" aria-valuenow="{{dist}}"
+                aria-valuemin="0" aria-valuemax="100">{{dist}}</div>
+            </div>
+            {% elif dist >= 45 and dist <= 85 %}
+            <div class="progress">
+              <div class="progress-bar bg-warning" role="progressbar" style="width: {{dist}}%" aria-valuenow="{{dist}}"
+                aria-valuemin="0" aria-valuemax="100">{{dist}}</div>
+            </div>
+            {% else %}
+            <div class="progress">
+              <div class="progress-bar bg-danger" role="progressbar" style="width: {{dist}}%" aria-valuenow="{{dist}}"
+                aria-valuemin="0" aria-valuemax="100">{{dist}}</div>
+
+              {% endif %}
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
 
 </body>
 
